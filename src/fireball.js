@@ -3,8 +3,8 @@ class Fireball {
         this.ctx = ctx
         this.x0 = x;
         this.y0 = y;
-        this.w = 30;
-        this.h = 30;
+        this.w = 100;
+        this.h = 100;
         this.vy = -15;
 
         this.img = new Image();
@@ -21,8 +21,8 @@ class Fireball {
             this.img.frameIndex + this.img.height / this.img.frames,
             this.img.width,
             this.img.height / this.img.frames,
-            this.x0,
-            this.y0+this.h,
+            this.x0-80,
+            this.y0-80,
             this.w,
             this.h
         )
