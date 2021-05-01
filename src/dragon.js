@@ -28,6 +28,7 @@ class Dragon {
         this.img.frames = 3;
         this.img.frameIndex = 0;
         this.ticks = 0;
+        this.coldown = 0;
 
         this.setListeners();
 
@@ -46,7 +47,6 @@ class Dragon {
             this.w,
             this.h
         )
-
         this.weapon.draw();
     }
 
@@ -119,7 +119,10 @@ class Dragon {
         }
 
         if(this.action.shoot) {
-            this.weapon.shoot();
+            if(this.coldown++ >=15){
+                this.coldown = 0;
+                this.weapon.shoot();
+            }
         }
     }
 
