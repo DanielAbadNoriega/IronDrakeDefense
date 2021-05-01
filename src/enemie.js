@@ -5,7 +5,7 @@ class Enemie {
         this.w = 50;
         this.h = 50;
 
-        this.x = Math.floor(Math.random() * this.ctx.canvas.width - this.w);
+        this.x = Math.floor(Math.random() * (this.ctx.canvas.width - this.w)+100 );
         this.y = -this.h;
 
         this.vy = 0.3;
@@ -36,7 +36,7 @@ class Enemie {
 
     move() {
         this.animate();
-
+        this.mapLimits();
         this.y += this.vy;
     }
 
@@ -65,11 +65,11 @@ class Enemie {
     mapLimits() {
 
         if (this.x + this.w >= this.ctx.canvas.width) {
-            this.x = this.ctx.canvas.width - this.w;
+            this.x = this.ctx.canvas.width - (this.w*2);
         }
 
         if (this.x < 0) {
-            this.x = +10;
+            this.x = 100;
         }
     }
 }

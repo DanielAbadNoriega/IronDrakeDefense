@@ -85,4 +85,13 @@ class Game {
         }
         return isCatch;
     }
+
+    enemieFired() {
+        const isFired = this.enemies.some(enemie => enemie.isCatch(this.dragon.fireballs.x0))
+        if (isFired) {
+            this.score += 5;
+            console.log(this.score)
+        }
+        return isFired;
+    }
 }

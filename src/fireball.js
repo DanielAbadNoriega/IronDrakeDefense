@@ -4,7 +4,7 @@ class Fireball {
         this.x0 = x;
         this.y0 = y;
         this.w = 100;
-        this.h = 100;
+        this.h = 200;
         this.vy = -15;
 
         this.img = new Image();
@@ -34,7 +34,7 @@ class Fireball {
     }
 
     animate() {
-        if (this.tick++ >= 5) {
+        if (this.tick++ >= 3) {
             this.tick = 0;
             this.img.frameIndex++;
         }

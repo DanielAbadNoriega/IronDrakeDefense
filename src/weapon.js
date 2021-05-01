@@ -16,7 +16,7 @@ class Weapon {
     
     draw() {
         this.clearFireballs();
-        this.fireballs.forEach(b => b.draw())
+        this.fireballs.forEach(fire => fire.draw())
     }
     
     clearFireballs() {
@@ -24,6 +24,6 @@ class Weapon {
     }
 
     move() {
-        this.fireballs.forEach(b => b.move())
+        this.fireballs.forEach(fire => fire.move())
     }
 }

@@ -5,7 +5,7 @@ class Coin {
         this.w = 50;
         this.h = 50;
 
-        this.x = Math.floor(Math.random() * this.ctx.canvas.width - this.w);
+        this.x = Math.floor(Math.random() * (this.ctx.canvas.width - this.w)+10);
         this.y = -this.h;
 
         this.vy = 0.3;
@@ -36,7 +36,7 @@ class Coin {
 
     move() {
         this.animate();
-
+        this.mapLimits();
         this.y += this.vy;
     }
 
@@ -60,5 +60,15 @@ class Coin {
             this.isCatched = true
         }
         return collideX && collideY;
+    }
+
+    mapLimits() {
+        if (this.x + this.w >= this.ctx.canvas.width) {
+            this.x = this.ctx.canvas.width - this.w;
+        }
+
+        if (this.x < 0) {
+            this.x = 100;
+        }
     }
 }
