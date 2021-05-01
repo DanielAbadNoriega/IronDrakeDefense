@@ -41,7 +41,7 @@ class Enemie {
     }
 
     animate() {
-        if (this.tick++ >= 5) {
+        if (this.tick++ >= 2) {
             this.tick = 0;
             this.img.frameIndex++;
         }
