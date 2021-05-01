@@ -9,10 +9,10 @@ class Enemie {
         this.y = -this.h;
 
         this.vy = 0.3;
-        this.isCatched = false
+        this.isCatched = false;
 
         this.img = new Image();
-        this.img.src = './Images/enemies.png'
+        this.img.src = './Images/enemies.png';
 
         this.img.frames = 11;
         this.img.frameIndex = 0;
@@ -60,5 +60,16 @@ class Enemie {
             this.isCatched = true
         }
         return collideX && collideY;
+    }
+
+    mapLimits() {
+
+        if (this.x + this.w >= this.ctx.canvas.width) {
+            this.x = this.ctx.canvas.width - this.w;
+        }
+
+        if (this.x < 0) {
+            this.x = +10;
+        }
     }
 }

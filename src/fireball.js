@@ -1,17 +1,17 @@
 class Fireball {
-    constructor(ctx) {
+    constructor(ctx,x,y) {
         this.ctx = ctx
-        this.x = x0
-        this.y = y0
-        this.vy = 15
+        this.x0 = x
+        this.y0 = y
+        this.vy = -15
         this.r = 2
     }
 
     draw() {
         this.ctx.beginPath();
         this.ctx.arc(
-            this.x,
-            this.y,
+            this.x0,
+            this.y0,
             this.r,
             0,
             2 * Math.PI
@@ -22,13 +22,13 @@ class Fireball {
     }
 
     move() {
-        this.x += this.vy
+        this.y0 += this.vy
         // TODO: move circle
     }
 
     isVisible() {
 
-        return this.x < this.ctx.canvas.width
+        return this.y0 < this.ctx.canvas.width
 
         // TODO: is inside canvas?
     }

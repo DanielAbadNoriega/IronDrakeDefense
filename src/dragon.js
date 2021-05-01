@@ -55,6 +55,8 @@ class Dragon {
         this.animate();
         this.applyActions();
         this.mapLimits();
+        this.weapon.move();
+
         this.x0 += this.vx;
         this.vy += this.g;
         this.y0 += this.vy;

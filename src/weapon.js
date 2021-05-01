@@ -13,14 +13,14 @@ class Weapon {
 
         this.fireballs.push(fireball)
     }
-
-    clearFireballs() {
-        this.fireballs = this.fireballs.filter(b => b.isVisible())
-    }
-
+    
     draw() {
         this.clearFireballs();
         this.fireballs.forEach(b => b.draw())
+    }
+    
+    clearFireballs() {
+        this.fireballs = this.fireballs.filter(b => b.isVisible())
     }
 
     move() {
