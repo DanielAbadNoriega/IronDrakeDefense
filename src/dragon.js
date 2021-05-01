@@ -18,7 +18,8 @@ class Dragon {
             right: false,
             left: false,
             up: false,
-            down: false
+            down: false,
+            space: false
         }
 
         this.img = new Image();
@@ -29,6 +30,8 @@ class Dragon {
         this.ticks = 0;
 
         this.setListeners();
+
+        this.weapon = new Weapon(this);
     }
 
     draw() {
@@ -43,6 +46,8 @@ class Dragon {
             this.w,
             this.h
         )
+
+        this.weapon.draw();
     }
 
     //Movimientos en ejes
@@ -87,6 +92,9 @@ class Dragon {
             case DOWN:
                 this.action.down = action;
                 break;
+            case SPACE:
+                this.action.shoot = action
+                break;
         }
     }
 
@@ -108,6 +116,9 @@ class Dragon {
             this.vx = 0;
         }
 
+        if(this.action.shoot) {
+            this.weapon.shoot();
+        }
     }
 
     //Definimos limites
