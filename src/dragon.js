@@ -53,7 +53,6 @@ class Dragon {
         this.x0 += this.vx;
         this.vy += this.g;
         this.y0 += this.vy;
-        console.log('this.y0', this.y0)
     }
 
     //Animamos al pj
@@ -112,12 +111,16 @@ class Dragon {
             this.x0 = this.x;
         }
     }
-    
+
     //Definimos limites
     mapLimits() {
         if (this.y0 + this.h >= this.ctx.canvas.height) {
             this.vy = 0;
             this.y0 = 818;
+        }
+        if(this.y0 <= 0) {
+            this.y0 = 1;
+            this.vy = 0;
         }
 
         if (this.x0 + this.w >= this.ctx.canvas.width) {
@@ -125,7 +128,7 @@ class Dragon {
         }
 
         if(this.x0 < 0) {
-            this.x0 = 0;
+            this.x0 *= -1;
         }
     }
 }
