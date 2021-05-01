@@ -6,6 +6,7 @@ class Game {
 
         this.bg = new Background(ctx);
         this.dragon = new Dragon(ctx);
+        this.enemies = [];
         this.coins = [];
         this.score = 0;
     }
@@ -16,6 +17,7 @@ class Game {
             this.draw();
             this.move();
             this.addCoin();
+            this.addEnemie();
             if (this.drawCount++ > 1000) {
                 this.drawCount = 0;
             };
@@ -27,12 +29,14 @@ class Game {
         this.bg.draw();
         this.dragon.draw();
         this.coins.forEach((coin) => coin.draw())
+        this.enemies.forEach((enemie) => enemie.draw())
     }
 
     move() {
         this.bg.move();
         this.dragon.move();
         this.coins.forEach((coin) => coin.move())
+        this.enemies.forEach((enemie) => enemie.move())
     }
 
     clear() {
@@ -60,4 +64,10 @@ class Game {
         return isCatch;
     }
 
+    addEnemie() {
+        if (this.drawCount % 100) {
+            return
+        }
+        this.enemies.push(new Enemie(this.ctx));
+    }
 }
