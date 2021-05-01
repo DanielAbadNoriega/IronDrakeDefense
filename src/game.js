@@ -6,7 +6,8 @@ class Game {
 
         this.bg = new Background(ctx);
         this.dragon = new Dragon(ctx);
-        this.coins = []
+        this.coins = [];
+        this.score = 0;
     }
 
     start() {
@@ -15,18 +16,14 @@ class Game {
             this.draw();
             this.move();
             this.addCoin();
-            if(this.drawCount++ > 1000){
+            if (this.drawCount++ > 1000) {
                 this.drawCount = 0;
             };
+            this.coinCatch();
+            this.addScore();
+
 
         }, 1000 / 60);
-    }
-
-    addCoin() {
-        if(this.drawCount % Math.PI) {
-            return
-        }
-        this.coins.push(new Coin(this.ctx));
     }
 
     draw() {
@@ -42,7 +39,28 @@ class Game {
     }
 
     clear() {
-        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.clearCoin()
+    }
+
+    addCoin() {
+        if (this.drawCount % Math.PI) {
+            return
+        }
+        this.coins.push(new Coin(this.ctx));
+    }
+
+    clearCoin() {
+        this.coins = this.coins.filter(coin => !coin.isCatched)
+    }
+
+    coinCatch() {
+        const isCatch = this.coins.some(coin => coin.isCatch(this.dragon));
+        if (isCatch) {
+            this.score++
+            console.log(this.score)
+        }
+        return isCatch;
     }
 
 }

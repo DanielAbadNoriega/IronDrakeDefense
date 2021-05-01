@@ -118,7 +118,7 @@ class Dragon {
             this.vy = 0;
             this.y0 = 818;
         }
-        if(this.y0 <= 0) {
+        if (this.y0 <= 0) {
             this.y0 = 1;
             this.vy = 0;
         }
@@ -127,7 +127,7 @@ class Dragon {
             this.x0 = this.ctx.canvas.width - this.w;
         }
 
-        if(this.x0 < 0) {
+        if (this.x0 < 0) {
             this.x0 *= -1;
         }
     }

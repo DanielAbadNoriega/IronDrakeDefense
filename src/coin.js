@@ -9,6 +9,7 @@ class Coin {
         this.y = -this.h;
 
         this.vy = 0.3;
+        this.isCatched = false
 
         this.img = new Image();
         this.img.src = './Images/coin.sprite.png'
@@ -48,5 +49,16 @@ class Coin {
         if (this.img.frameIndex >= 4) {
             this.img.frameIndex = 0;
         }
+    }
+
+    isCatch(el) {
+        const collideX = el.x0 + el.w > this.x && el.x0 < this.x + this.w;
+        const collideY = el.y0 < this.y + this.h && el.y0 + el.h > this.y;
+
+        if (collideX && collideY) {
+            console.log('entro')
+            this.isCatched = true
+        }
+        return collideX && collideY;
     }
 }
