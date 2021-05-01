@@ -22,6 +22,7 @@ class Game {
                 this.drawCount = 0;
             };
             this.coinCatch();
+            this.enemieCollision();
         }, 1000 / 60);
     }
 
@@ -41,7 +42,8 @@ class Game {
 
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-        this.clearCoin()
+        this.clearCoin();
+        this.clearEnemie();
     }
 
     addCoin() {
@@ -69,5 +71,18 @@ class Game {
             return
         }
         this.enemies.push(new Enemie(this.ctx));
+    }
+
+    clearEnemie() {
+        this.enemies = this.enemies.filter(enemie => !enemie.isCatched)
+    }
+
+    enemieCollision() {
+        const isCatch = this.enemies.some(enemie => enemie.isCatch(this.dragon));
+        if (isCatch) {
+            this.score = this.score - 5;
+            console.log(this.score)
+        }
+        return isCatch;
     }
 }
