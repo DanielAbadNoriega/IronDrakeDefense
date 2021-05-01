@@ -4,8 +4,8 @@ class Coin {
 
         this.w = 50;
         this.h = 50;
-        
-        this.x = Math.floor(Math.random() * this.ctx.canvas.width-this.w);
+
+        this.x = Math.floor(Math.random() * this.ctx.canvas.width - this.w);
         this.y = -this.h;
 
         this.vy = 0.3;
@@ -47,6 +47,6 @@ class Coin {
         //resetamos los frames
         if (this.img.frameIndex >= 4) {
             this.img.frameIndex = 0;
-    }
+        }
     }
 }
