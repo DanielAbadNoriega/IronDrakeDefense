@@ -16,6 +16,7 @@ class Dragon {
 
         this.img.frames = 3;
         this.img.frameIndex = 0;
+        this.ticks = 0;
     }
 
     draw() {
@@ -37,9 +38,12 @@ class Dragon {
     }
 
     animate() {
-        this.img.frameIndex++;
-        if (this.img.frameIndex >= this.img.frames) {
-            this.img.frameIndex = 0;
+        if (this.ticks++ >=10) {
+            this.ticks = 0;
+            this.img.frameIndex++;
+            if (this.img.frameIndex >= this.img.frames) {
+                this.img.frameIndex = 0;
+            }
         }
     }
 }
