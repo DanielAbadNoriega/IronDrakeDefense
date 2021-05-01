@@ -101,13 +101,17 @@ class Dragon {
         }
 
         if (this.action.right) {
-            this.vx += 0.1;
+            this.vx += 0.05;
         } else if (this.action.left) {
-            this.vx -= 0.1;
+            this.vx -= 0.05;
         } else {
             this.vx = 0;
         }
 
+        /*         if (this.action.down) {
+                    this.y0 = this.y;
+                    this.x0 = this.x;
+                } */
     }
 
     //Definimos limites
