@@ -11,12 +11,19 @@ class Enemie {
         this.vy = 0.3;
         this.isCatched = false;
 
+        this.enemies = ['./Images/enemigos_black.png', './Images/enemigos_green1.png','./Images/enemigos_green2.png','./Images/enemigos_grey.png','./Images/enemigos_orange.png','./Images/enemigos_purple.png','./Images/enemigos_red.png']
         this.img = new Image();
-        this.img.src = './Images/enemies.png';
+        this.img.src = this.randomEnemie();
 
-        this.img.frames = 11;
+        this.img.frames = 3;
         this.img.frameIndex = 0;
         this.tick = 0;
+    }
+
+    randomEnemie(){
+        const indexRandom = Math.floor(Math.random()*(this.enemies.length));
+        const enemieRandom = this.enemies[indexRandom];
+        return enemieRandom;
     }
 
     draw() {
@@ -41,12 +48,12 @@ class Enemie {
     }
 
     animate() {
-        if (this.tick++ >= 2) {
+        if (this.tick++ >= 6) {
             this.tick = 0;
             this.img.frameIndex++;
         }
         //resetamos los frames
-        if (this.img.frameIndex >= 11) {
+        if (this.img.frameIndex >= this.img.frames) {
             this.img.frameIndex = 0;
         }
     }
@@ -65,7 +72,7 @@ class Enemie {
     mapLimits() {
 
         if (this.x + this.w >= this.ctx.canvas.width) {
-            this.x = this.ctx.canvas.width - (this.w*2);
+            this.x = this.ctx.canvas.width - (this.w*3);
         }
 
         if (this.x < 0) {

@@ -21,8 +21,8 @@ class Fireball {
             this.img.frameIndex + this.img.height / this.img.frames,
             this.img.width,
             this.img.height / this.img.frames,
-            this.x0-80,
-            this.y0-80,
+            this.x0-105,
+            this.y0-265,
             this.w,
             this.h
         )
