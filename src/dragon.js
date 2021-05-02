@@ -3,12 +3,12 @@ class Dragon {
         this.ctx = ctx;
 
         this.x = 400;
-        this.y = 750;
+        this.y = 550;
         this.x0 = this.x;
         this.y0 = this.y;
 
         this.w = 200;
-        this.h = 80;
+        this.h = 200;
 
         this.vx = 0;
         this.vy = 0;
@@ -23,9 +23,9 @@ class Dragon {
         }
 
         this.img = new Image();
-        this.img.src = './Images/dragon.png'
+        this.img.src = './Images/dragon28.png'
 
-        this.img.frames = 3;
+        this.img.frames = 4;
         this.img.frameIndex = 0;
         this.ticks = 0;
         this.coldown = 0;
@@ -40,7 +40,7 @@ class Dragon {
             this.img,
             this.img.frameIndex * this.img.width / this.img.frames,
             0,
-            this.img.width / 3,
+            this.img.width / 4,
             this.img.height,
             this.x0,
             this.y0,
@@ -130,7 +130,7 @@ class Dragon {
     mapLimits() {
         if (this.y0 + this.h >= this.ctx.canvas.height) {
             this.vy = 0;
-            this.y0 = 818;
+            this.y0 = 698;
         }
         if (this.y0 <= 0) {
             this.y0 = 1;

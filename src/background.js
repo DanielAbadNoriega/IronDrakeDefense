@@ -10,7 +10,7 @@ class Background {
         this.vy = 1;
 
         this.img = new Image();
-        this.img.src = "./Images/sky_bg.jpg";
+        this.img.src = "./Images/background.png";
     }
 
     draw() {
