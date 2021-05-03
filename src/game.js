@@ -60,7 +60,7 @@ class Game {
     coinCatch() {
         const isCatch = this.coins.some(coin => coin.isCatch(this.dragon));
         if (isCatch) {
-            this.score++
+            this.score +=100
             console.log(this.score)
         }
         return isCatch;
@@ -73,10 +73,6 @@ class Game {
         this.enemies.push(new Enemie(this.ctx));
     }
 
-    clearEnemie() {
-        this.enemies = this.enemies.filter(enemie => !enemie.isCatched)
-    }
-
     enemieCollision() {
         const isCatch = this.enemies.some(enemie => enemie.isCatch(this.dragon));
         if (isCatch) {
@@ -86,12 +82,18 @@ class Game {
         return isCatch;
     }
 
-    enemieFired() {
-        const isFired = this.enemies.some(enemie => enemie.isCatch(this.dragon.fireballs.x0))
+    clearEnemie() {
+        this.enemies = this.enemies.filter(enemie => !enemie.isCatched)
+    }
+
+
+/*     enemieFired() {
+        const fireballs = this.dragon.weapon.fireballs.map( f => f);
+        const isFired = this.enemies.some(enemie => enemie.isCatch(fireballs));
         if (isFired) {
             this.score += 5;
             console.log(this.score)
         }
         return isFired;
-    }
+    } */
 }

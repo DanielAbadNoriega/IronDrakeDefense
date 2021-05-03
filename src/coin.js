@@ -56,7 +56,6 @@ class Coin {
         const collideY = el.y0 < this.y + this.h && el.y0 + el.h > this.y;
 
         if (collideX && collideY) {
-            console.log('entro')
             this.isCatched = true
         }
         return collideX && collideY;
