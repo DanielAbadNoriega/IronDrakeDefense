@@ -24,6 +24,8 @@ class Game {
             this.coinCatch();
             this.enemieCollision();
             this.enemieFired();
+            this.drawScore();
+            this.gameOver();
         }, 1000 / 60);
     }
 
@@ -61,7 +63,7 @@ class Game {
     coinCatch() {
         const isCatch = this.coins.some(coin => coin.isCatch(this.dragon));
         if (isCatch) {
-            this.score +=100
+            this.score += 100
             console.log(this.score)
         }
         return isCatch;
@@ -102,4 +104,24 @@ class Game {
         }
         return isFired;
     }
+
+    drawScore() {
+        this.ctx.font = '30px serif';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText('Score: ' + this.score, 50, 50);
+    }
+
+    gameOver() {
+        if(this.score <= 0 && this.enemieCollision()){
+            clearInterval(this.setIntervalId)
+    
+            this.ctx.font = "40px Comic Sans MS";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText(
+                "GAME OVER",
+                this.ctx.canvas.width / 2,
+                this.ctx.canvas.height / 2
+            );
+        }
+        }
 }
