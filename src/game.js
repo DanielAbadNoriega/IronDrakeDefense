@@ -23,6 +23,7 @@ class Game {
             };
             this.coinCatch();
             this.enemieCollision();
+            this.enemieFired();
         }, 1000 / 60);
     }
 
@@ -87,13 +88,18 @@ class Game {
     }
 
 
-/*     enemieFired() {
-        const fireballs = this.dragon.weapon.fireballs.map( f => f);
-        const isFired = this.enemies.some(enemie => enemie.isCatch(fireballs));
+    enemieFired() {
+        const fireballs = this.dragon.weapon.fireballs
+        const isFired = this.enemies.some(enemie => {
+            return fireballs.some(fireball => {
+                return enemie.isCatch(fireball)
+            })
+        });
+
         if (isFired) {
             this.score += 5;
             console.log(this.score)
         }
         return isFired;
-    } */
+    }
 }
