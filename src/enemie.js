@@ -5,13 +5,15 @@ class Enemie {
         this.w = 50;
         this.h = 50;
 
-        this.x = Math.floor(Math.random() * (this.ctx.canvas.width - this.w)+100 );
+        this.x = Math.random() * (this.ctx.canvas.width - this.w) + 100;
         this.y = -this.h;
 
         this.vy = 0.3;
+        this.vx = 0.3;
+        this.xRandom = Math.sign(Math.random() - 0.5);
         this.isCatched = false;
 
-        this.enemies = ['./Images/enemigos_black.png', './Images/enemigos_green1.png','./Images/enemigos_green2.png','./Images/enemigos_grey.png','./Images/enemigos_orange.png','./Images/enemigos_purple.png','./Images/enemigos_red.png']
+        this.enemies = ['./Images/enemigos_black.png', './Images/enemigos_green1.png', './Images/enemigos_green2.png', './Images/enemigos_grey.png', './Images/enemigos_orange.png', './Images/enemigos_purple.png', './Images/enemigos_red.png']
         this.img = new Image();
         this.img.src = this.randomEnemie();
 
@@ -20,8 +22,8 @@ class Enemie {
         this.tick = 0;
     }
 
-    randomEnemie(){
-        const indexRandom = Math.floor(Math.random()*(this.enemies.length));
+    randomEnemie() {
+        const indexRandom = Math.floor(Math.random() * (this.enemies.length));
         const enemieRandom = this.enemies[indexRandom];
         return enemieRandom;
     }
@@ -45,6 +47,7 @@ class Enemie {
         this.animate();
         this.mapLimits();
         this.y += this.vy;
+        this.x += this.vx * this.xRandom;
     }
 
     animate() {
@@ -70,12 +73,15 @@ class Enemie {
 
     mapLimits() {
 
-        if (this.x + this.w >= this.ctx.canvas.width) {
-            this.x = this.ctx.canvas.width - (this.w*3);
+        if (this.x + this.w === this.ctx.canvas.width) {
+            this.vx *= -1;
+        } else if (this.x + this.w > this.ctx.canvas.width) {
+            this.x = this.ctx.canvas.width - (this.w);
+            this.vx *=-1;
         }
 
         if (this.x < 0) {
-            this.x = 100;
+            this.vx *= -1;
         }
     }
 }
