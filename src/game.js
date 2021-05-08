@@ -11,7 +11,7 @@ class Game {
         this.coins = [];
         this.fireballs = [];
         this.score = 0;
-        this.isStarted= false;
+        this.isStarted = false;
         this.buttonGO = document.getElementById('button-game-over')
     }
 
@@ -30,7 +30,6 @@ class Game {
             this.coinCatch();
             this.checkCollisions();
             this.drawScore();
-            this.gameOver();
         }, 1000 / 60);
     }
 
@@ -115,6 +114,7 @@ class Game {
         let ballBoss = this.bosses.some(boss => {
             return fireballs.some(fireball => {
                 if (fireball.isCollide(boss)) {
+                    /* console.log("Boss Fired") */
                     fireball.isCollided = true
                     boss.hits++
                     if (boss.hits === 6) {
@@ -130,6 +130,7 @@ class Game {
         let ballEnemie = this.enemies.some(enemie => {
             return fireballs.some(fireball => {
                 if (fireball.isCollide(enemie)) {
+                    /* console.log("Enemie Fired") */
                     fireball.isCollided = true
                     enemie.isCatched = true;
                     this.score += 5;
@@ -142,10 +143,12 @@ class Game {
 
 
         let allEnemies = [...this.enemies, ...this.bosses];
-        let dragonAllEnemies = allEnemies.some(enemy => {
-            return this.dragon.isCollide(enemy)
+        let dragonCollide = allEnemies.some(enemy => {
+            console.log("entro")
+            this.dragon.isCollide(enemy)
         });
-        if(dragonAllEnemies) {
+        console.log(dragonCollide)
+        if (dragonCollide) {
             console.log("Entro")
             this.gameOver();
         }
@@ -159,35 +162,33 @@ class Game {
     }
 
     gameOver() {
-        if (this.checkCollisions()) {
-            clearInterval(this.setIntervalId);
-            this.buttonGO.style.display = 'block';
-            this.ctx.font = "40px Comic Sans MS";
-            this.ctx.textAlign = "center";
-            this.ctx.fillText(
-                "GAME OVER",
-                this.ctx.canvas.width / 2,
-                this.ctx.canvas.height / 2
-            );
-        }
+        clearInterval(this.setIntervalId);
+        this.buttonGO.style.display = 'block';
+        this.ctx.font = "40px Comic Sans MS";
+        this.ctx.textAlign = "center";
+        this.ctx.fillText(
+            "GAME OVER",
+            this.ctx.canvas.width / 2,
+            this.ctx.canvas.height / 2
+        );
     }
 
 
 
-/*     restartButton() {
-        let restartButton = document.querySelector(`.restart`);
-        restartButton.innerHTML = `<button id="restart-button"></button>`;
-        restartButton.addEventListener('click', function (event) {
-            event.preventDefault()
-            coronas = [];
-            allSanitizers = [];
-            allVaccins = [];
-            allBottles = [];
-            sanitizerCounter = 10;
-            myGameArea.clear();
-            player = new Player();
-            myGameArea.start();
-            restartButton.innerHTML = ``;
-        });
-    } */
+    /*     restartButton() {
+            let restartButton = document.querySelector(`.restart`);
+            restartButton.innerHTML = `<button id="restart-button"></button>`;
+            restartButton.addEventListener('click', function (event) {
+                event.preventDefault()
+                coronas = [];
+                allSanitizers = [];
+                allVaccins = [];
+                allBottles = [];
+                sanitizerCounter = 10;
+                myGameArea.clear();
+                player = new Player();
+                myGameArea.start();
+                restartButton.innerHTML = ``;
+            });
+        } */
 }
