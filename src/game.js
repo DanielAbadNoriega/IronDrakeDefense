@@ -19,12 +19,18 @@ class Game {
             this.move();
             this.addCoin();
             this.addEnemie();
+            this.addBoss();
             if (this.drawCount++ > 1000) {
                 this.drawCount = 0;
             };
             this.coinCatch();
             this.enemieCollision();
             this.enemieFired();
+            this.enemieScore();
+            this.bossCollision();
+            this.bossFired();
+            this.bossScore();
+            this.isFired();
             this.drawScore();
             this.gameOver();
         }, 1000 / 60);
@@ -35,6 +41,7 @@ class Game {
         this.dragon.draw();
         this.coins.forEach((coin) => coin.draw())
         this.enemies.forEach((enemie) => enemie.draw())
+        this.bosses.forEach((boss) => boss.draw());
     }
 
     move() {
@@ -42,12 +49,14 @@ class Game {
         this.dragon.move();
         this.coins.forEach((coin) => coin.move())
         this.enemies.forEach((enemie) => enemie.move())
+        this.bosses.forEach((boss) => boss.move());
     }
 
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         this.clearCoin();
         this.clearEnemie();
+        this.clearBoss();
     }
 
     // Coin Methods
@@ -66,7 +75,6 @@ class Game {
         const isCatch = this.coins.some(coin => coin.isCatch(this.dragon));
         if (isCatch) {
             this.score += 100
-            console.log(this.score)
         }
         return isCatch;
     }
@@ -83,7 +91,6 @@ class Game {
         const isCatch = this.enemies.some(enemie => enemie.isCatch(this.dragon));
         if (isCatch) {
             this.score = this.score - 5;
-            console.log(this.score)
         }
         return isCatch;
     }
@@ -99,12 +106,12 @@ class Game {
                 return enemie.isCatch(fireball)
             })
         });
-
-        if (isFired) {
-            this.score += 5;
-            console.log(this.score)
-        }
         return isFired;
+    }
+
+    enemieScore(){
+        if(this.enemieFired())
+            this.score += 5;
     }
 
     // Boss Methods
@@ -120,7 +127,6 @@ class Game {
         const isCatch = this.bosses.some(boss => boss.isCatch(this.dragon));
         if (isCatch) {
             this.score = this.score - 100;
-            console.log(this.score)
         }
         return isCatch;
     }
@@ -136,12 +142,28 @@ class Game {
                 return boss.isCatch(fireball)
             })
         });
-
-        if (isFired) {
-            this.score += 100;
-            console.log(this.score)
-        }
         return isFired;
+    }
+
+    bossScore(){
+        if(this.bossFired())
+            this.score += 100;
+    }
+
+    //Fire Methods
+
+    clearFire(){
+
+    }
+
+    isFired() {
+        const fireballs = this.dragon.weapon.fireballs; 
+
+        if(this.bossFired() || this.enemieFired()) {
+            console.log('Fired')
+            const fired = true;
+            return fired;
+        }
     }
 
     drawScore() {
@@ -151,9 +173,9 @@ class Game {
     }
 
     gameOver() {
-        if(this.score <= 0 && this.enemieCollision()){
+        if (this.score <= 0 && this.enemieCollision()) {
             clearInterval(this.setIntervalId)
-    
+
             this.ctx.font = "40px Comic Sans MS";
             this.ctx.textAlign = "center";
             this.ctx.fillText(
@@ -162,5 +184,5 @@ class Game {
                 this.ctx.canvas.height / 2
             );
         }
-        }
+    }
 }

@@ -12,6 +12,8 @@ class Fireball {
         this.img.frames = 6;
         this.img.frameIndex = 0;
         this.ticks = 0;
+
+        this.fired = false;
     }
 
     draw() {
