@@ -11,7 +11,6 @@ class Boss {
         this.vy = 0.3;
         this.vx = 0.3;
         this.xRandom = Math.sign(Math.random() - 0.5);
-        this.isCatched = false;
         this.hits = 0;
 
         this.bosses = ['./Images/bossOneM.png']
@@ -60,20 +59,6 @@ class Boss {
         if (this.img.frameIndex >= this.img.frames) {
             this.img.frameIndex = 0;
         }
-    }
-
-    isCatch(el) {
-        const collideX = el.x0 + el.w > this.x && el.x0 < this.x + this.w;
-        const collideY = el.y0 < this.y + this.h && el.y0 + el.h > this.y;
-
-        if (collideX && collideY) {
-            this.hits++;
-            console.log(this.hits)
-            if(this.hits = 5){
-                this.isCatched = true
-            }
-        }
-        return collideX && collideY;
     }
 
     mapLimits() {

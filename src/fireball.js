@@ -12,8 +12,7 @@ class Fireball {
         this.img.frames = 6;
         this.img.frameIndex = 0;
         this.ticks = 0;
-
-        this.fired = false;
+        this.isCollided = false;
     }
 
     draw() {
@@ -48,6 +47,13 @@ class Fireball {
     }
 
     isVisible() {
-        return this.y0 < this.ctx.canvas.width
+        return this.y0 < this.ctx.canvas.height
+    }
+
+    isCollide(el) {
+        const collideX = el.x + el.w > this.x0 && el.x < this.x0 + this.w;
+        const collideY = el.y < this.y0 + this.h && el.y + el.h > this.y0;
+
+        return collideX && collideY;
     }
 }

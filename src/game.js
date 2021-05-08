@@ -9,6 +9,7 @@ class Game {
         this.bosses = [];
         this.enemies = [];
         this.coins = [];
+        this.fireballs = [];
         this.score = 0;
     }
 
@@ -27,10 +28,7 @@ class Game {
             this.enemieCollision();
             this.enemieFired();
             this.enemieScore();
-            this.bossCollision();
-            this.bossFired();
-            this.bossScore();
-            this.isFired();
+            this.checkCollisions();
             this.drawScore();
             this.gameOver();
         }, 1000 / 60);
@@ -57,6 +55,7 @@ class Game {
         this.clearCoin();
         this.clearEnemie();
         this.clearBoss();
+        this.clearFire();
     }
 
     // Coin Methods
@@ -109,8 +108,8 @@ class Game {
         return isFired;
     }
 
-    enemieScore(){
-        if(this.enemieFired())
+    enemieScore() {
+        if (this.enemieFired())
             this.score += 5;
     }
 
@@ -123,47 +122,40 @@ class Game {
         this.bosses.push(new Boss(this.ctx));
     }
 
-    bossCollision() {
-        const isCatch = this.bosses.some(boss => boss.isCatch(this.dragon));
-        if (isCatch) {
-            this.score = this.score - 100;
-        }
-        return isCatch;
-    }
-
     clearBoss() {
-        this.bosses = this.bosses.filter(boss => !boss.isCatched)
-    }
-
-    bossFired() {
-        const fireballs = this.dragon.weapon.fireballs
-        const isFired = this.bosses.some(boss => {
-            return fireballs.some(fireball => {
-                return boss.isCatch(fireball)
-            })
-        });
-        return isFired;
-    }
-
-    bossScore(){
-        if(this.bossFired())
-            this.score += 100;
+        this.bosses = this.bosses.filter(boss => boss.hits < 6)
     }
 
     //Fire Methods
 
-    clearFire(){
-
+    clearFire() {
+        this.dragon.weapon.fireballs = this.dragon.weapon.fireballs.filter(fireball => !fireball.isCollided)
     }
 
-    isFired() {
-        const fireballs = this.dragon.weapon.fireballs; 
+    checkCollisions() {
+        const fireballs = this.dragon.weapon.fireballs;
 
-        if(this.bossFired() || this.enemieFired()) {
-            console.log('Fired')
-            const fired = true;
-            return fired;
-        }
+        const ballBoss = this.bosses.some(boss => {
+            return fireballs.some(fireball => {
+                if (fireball.isCollide(boss)) {
+                    fireball.isCollided = true
+                    boss.hits++
+                    if (boss.hits === 6) {
+                        this.score += 100
+                    }
+                    return true
+                } else {
+                    return false
+                }
+            })
+        })
+        return ballBoss;
+
+        // const allEnemies = [...this.enemies, ...this.bosses]
+        // const dragonAllEnemies = allEnemies.some(enemy => {
+        //     return dragon.collideWith(enemy))
+        // })
+
     }
 
     drawScore() {
