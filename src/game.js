@@ -139,13 +139,16 @@ class Game {
                 }
             })
         })
+/* 
+        return ballBoss && ballEnemie; */
 
-        return ballBoss && ballEnemie;
-
-        // const allEnemies = [...this.enemies, ...this.bosses]
-        // const dragonAllEnemies = allEnemies.some(enemy => {
-        //     return dragon.collideWith(enemy))
-        // })
+        const allEnemies = [...this.enemies, ...this.bosses];
+        const dragonAllEnemies = allEnemies.some(enemy => {
+            return dragon.isCollide(enemy)
+        });
+        if(dragonAllEnemies) {
+            this.gameOver();
+        }
 
     }
 
@@ -168,6 +171,8 @@ class Game {
             );
         }
     }
+
+
 
 /*     restartButton() {
         let restartButton = document.querySelector(`.restart`);

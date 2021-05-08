@@ -145,4 +145,14 @@ class Dragon {
             this.x0 *= -1;
         }
     }
+
+    isCollide(el) {
+        const collideX = el.x + el.w > this.x0 && el.x0< this.x0 + this.w;
+        const collideY = el.y < this.y0 + this.h && el.y + el.h > this.y0;
+
+        if (collideX && collideY) {
+            this.isCatched = true
+        }
+        return collideX && collideY;
+    }
 }

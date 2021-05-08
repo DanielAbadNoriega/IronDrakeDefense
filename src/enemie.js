@@ -61,16 +61,6 @@ class Enemie {
         }
     }
 
-    isCatch(el) {
-        const collideX = el.x0 + el.w > this.x && el.x0 < this.x + this.w;
-        const collideY = el.y0 < this.y + this.h && el.y0 + el.h > this.y;
-
-        if (collideX && collideY) {
-            this.isCatched = true
-        }
-        return collideX && collideY;
-    }
-
     mapLimits() {
 
         if (this.x + this.w === this.ctx.canvas.width) {
