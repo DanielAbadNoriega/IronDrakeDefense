@@ -1,12 +1,11 @@
 body {
   padding: 0;
   text-align: center;
-  background-image: url("./../Images/backgroundHtml.png");
-  background-size: cover;
+  background-image: url("./../Images/backgroundAll.png");
+  background-size: contain;
   background-repeat: no-repeat;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: flex-start;
+/*   display: flex;
+  justify-content: flex-start; */
 }
 
 #button-reload {
@@ -14,24 +13,27 @@ body {
 }
 
 #container {
-  /* border: 1px solid white; */
-  width: 1650px;
+  border: 1px solid white;
+/*   background-image: url("./../Images/arcadeMachine.png");
+  background-size: cover;
+  background-repeat: no-repeat; */
+  width: 2545px;
   height: 1250px;
 
   margin: 0px auto;
+  margin-top: -75px;
   /* margin-top: 200px; */
   /* margin-right: 800px; */
-  text-align: center;
-  background-image: url("./../Images/arcadeMachine.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-repeat: no-repeat;
+  /* text-align: center; */
 }
 
 #canvas {
   border: 1px solid black;
+  background-size: contain;
   border-radius: 2.6em;
+  margin: 0px auto;
   margin-top: 265px;
-  width: 918px;
-  height: 700px;
+  margin-right: 5px;
+  width: 930px;
+  height: 710px;
 }
