@@ -4,8 +4,8 @@ class Dragon {
 
         this.x = 400;
         this.y = 550;
-        this.x0 = this.x;
-        this.y0 = this.y;
+        this.x = this.x;
+        this.y = this.y;
 
         this.w = 200;
         this.h = 200;
@@ -42,8 +42,8 @@ class Dragon {
             0,
             this.img.width / 4,
             this.img.height,
-            this.x0,
-            this.y0,
+            this.x,
+            this.y,
             this.w,
             this.h
         )
@@ -57,9 +57,9 @@ class Dragon {
         this.mapLimits();
         this.weapon.move();
 
-        this.x0 += this.vx;
+        this.x += this.vx;
         this.vy += this.g;
-        this.y0 += this.vy;
+        this.y += this.vy;
     }
 
     //Animamos al pj
@@ -128,27 +128,27 @@ class Dragon {
 
     //Definimos limites
     mapLimits() {
-        if (this.y0 + this.h >= this.ctx.canvas.height) {
+        if (this.y + this.h >= this.ctx.canvas.height) {
             this.vy = 0;
-            this.y0 = 698;
+            this.y = 698;
         }
-        if (this.y0 <= 0) {
-            this.y0 = 1;
+        if (this.y <= 0) {
+            this.y = 1;
             this.vy = 0;
         }
 
-        if (this.x0 + this.w >= this.ctx.canvas.width) {
-            this.x0 = this.ctx.canvas.width - this.w;
+        if (this.x + this.w >= this.ctx.canvas.width) {
+            this.x = this.ctx.canvas.width - this.w;
         }
 
-        if (this.x0 < 0) {
-            this.x0 *= -1;
+        if (this.x < 0) {
+            this.x *= -1;
         }
     }
 
     isCollide(el) {
-        const collideX = el.x + el.w > this.x0 && el.x0< this.x0 + this.w;
-        const collideY = el.y < this.y0 + this.h && el.y + el.h > this.y0;
+        const collideX = el.x + el.w > this.x && el.x < this.x + this.w;
+        const collideY = el.y < this.y + this.h && el.y + el.h > this.y;
 
         if (collideX && collideY) {
             this.isCatched = true

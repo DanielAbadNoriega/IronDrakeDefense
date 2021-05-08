@@ -4,9 +4,7 @@ window.onload = () => {
 
     const game = new Game(ctx)
     document.addEventListener("keydown", (event) => {
-        console.log(event)
         if (!game.isStarted) {
-            console.log("entro")
             /* intro.remove(); */
             game.start();
         }

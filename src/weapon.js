@@ -7,8 +7,8 @@ class Weapon {
     shoot() {
         const fireball = new Fireball(
             this.shooter.ctx,
-            this.shooter.x0 + this.shooter.w/4,
-            this.shooter.y0 - this.shooter.h/2,
+            this.shooter.x + this.shooter.w/4,
+            this.shooter.y - this.shooter.h/2,
         )
 
         this.fireballs.push(fireball)

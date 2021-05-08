@@ -110,9 +110,9 @@ class Game {
     }
 
     checkCollisions() {
-        const fireballs = this.dragon.weapon.fireballs;
+        let fireballs = this.dragon.weapon.fireballs;
 
-        const ballBoss = this.bosses.some(boss => {
+        let ballBoss = this.bosses.some(boss => {
             return fireballs.some(fireball => {
                 if (fireball.isCollide(boss)) {
                     fireball.isCollided = true
@@ -127,7 +127,7 @@ class Game {
             })
         })
 
-        const ballEnemie = this.enemies.some(enemie => {
+        let ballEnemie = this.enemies.some(enemie => {
             return fireballs.some(fireball => {
                 if (fireball.isCollide(enemie)) {
                     fireball.isCollided = true
@@ -139,14 +139,14 @@ class Game {
                 }
             })
         })
-/* 
-        return ballBoss && ballEnemie; */
 
-        const allEnemies = [...this.enemies, ...this.bosses];
-        const dragonAllEnemies = allEnemies.some(enemy => {
-            return dragon.isCollide(enemy)
+
+        let allEnemies = [...this.enemies, ...this.bosses];
+        let dragonAllEnemies = allEnemies.some(enemy => {
+            return this.dragon.isCollide(enemy)
         });
         if(dragonAllEnemies) {
+            console.log("Entro")
             this.gameOver();
         }
 
@@ -159,7 +159,7 @@ class Game {
     }
 
     gameOver() {
-        if (this.score <= 0 && this.enemieCollision()) {
+        if (this.checkCollisions()) {
             clearInterval(this.setIntervalId);
             this.buttonGO.style.display = 'block';
             this.ctx.font = "40px Comic Sans MS";

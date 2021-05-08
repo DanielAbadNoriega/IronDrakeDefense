@@ -1,8 +1,8 @@
 class Fireball {
     constructor(ctx, x, y) {
         this.ctx = ctx
-        this.x0 = x;
-        this.y0 = y;
+        this.x = x;
+        this.y = y;
         this.w = 100;
         this.h = 200;
         this.vy = -10;
@@ -22,8 +22,8 @@ class Fireball {
             this.img.frameIndex * this.img.height / this.img.frames,
             this.img.width,
             this.img.height / this.img.frames,
-            this.x0,
-            this.y0,
+            this.x,
+            this.y,
             this.w,
             this.h
         )
@@ -31,8 +31,8 @@ class Fireball {
     }
 
     move() {
-        
-        this.y0 += this.vy;
+
+        this.y += this.vy;
     }
 
     animate() {
@@ -43,16 +43,16 @@ class Fireball {
                 this.img.frameIndex = 0;
             }
         }
-        
+
     }
 
     isVisible() {
-        return this.y0 < this.ctx.canvas.height
+        return this.y < this.ctx.canvas.height
     }
 
     isCollide(el) {
-        const collideX = el.x + el.w > this.x0 && el.x < this.x0 + this.w;
-        const collideY = el.y < this.y0 + this.h && el.y + el.h > this.y0;
+        const collideX = el.x + el.w > this.x && el.x < this.x + this.w;
+        const collideY = el.y < this.y + this.h && el.y + el.h > this.y;
 
         return collideX && collideY;
     }
