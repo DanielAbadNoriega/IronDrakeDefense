@@ -130,7 +130,7 @@ class Dragon {
     mapLimits() {
         if (this.y + this.h >= this.ctx.canvas.height) {
             this.vy = 0;
-            this.y = 698;
+            this.y = (this.ctx.canvas.height -this.h)-2;
         }
         if (this.y <= 0) {
             this.y = 1;
@@ -138,11 +138,12 @@ class Dragon {
         }
 
         if (this.x + this.w >= this.ctx.canvas.width) {
-            this.x = this.ctx.canvas.width - this.w;
+            this.x = (this.ctx.canvas.width - this.w)-2;
         }
 
         if (this.x < 0) {
-            this.x *= -1;
+            /* this.x *= -1; */
+            this.x = 2;
         }
     }
 
