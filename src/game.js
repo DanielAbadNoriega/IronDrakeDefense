@@ -11,9 +11,12 @@ class Game {
         this.coins = [];
         this.fireballs = [];
         this.score = 0;
+        this.isStarted= false;
+        this.buttonGO = document.getElementById('button-game-over')
     }
 
     start() {
+        this.isStarted = true;
         this.setIntervalId = setInterval(() => {
             this.clear();
             this.draw();
@@ -25,9 +28,6 @@ class Game {
                 this.drawCount = 0;
             };
             this.coinCatch();
-            this.enemieCollision();
-            this.enemieFired();
-            this.enemieScore();
             this.checkCollisions();
             this.drawScore();
             this.gameOver();
@@ -86,31 +86,8 @@ class Game {
         this.enemies.push(new Enemie(this.ctx));
     }
 
-    enemieCollision() {
-        const isCatch = this.enemies.some(enemie => enemie.isCatch(this.dragon));
-        if (isCatch) {
-            this.score = this.score - 5;
-        }
-        return isCatch;
-    }
-
     clearEnemie() {
         this.enemies = this.enemies.filter(enemie => !enemie.isCatched)
-    }
-
-    enemieFired() {
-        const fireballs = this.dragon.weapon.fireballs
-        const isFired = this.enemies.some(enemie => {
-            return fireballs.some(fireball => {
-                return enemie.isCatch(fireball)
-            })
-        });
-        return isFired;
-    }
-
-    enemieScore() {
-        if (this.enemieFired())
-            this.score += 5;
     }
 
     // Boss Methods
@@ -149,7 +126,21 @@ class Game {
                 }
             })
         })
-        return ballBoss;
+
+        const ballEnemie = this.enemies.some(enemie => {
+            return fireballs.some(fireball => {
+                if (fireball.isCollide(enemie)) {
+                    fireball.isCollided = true
+                    enemie.isCatched = true;
+                    this.score += 5;
+                    return true
+                } else {
+                    return false
+                }
+            })
+        })
+
+        return ballBoss && ballEnemie;
 
         // const allEnemies = [...this.enemies, ...this.bosses]
         // const dragonAllEnemies = allEnemies.some(enemy => {
@@ -166,8 +157,8 @@ class Game {
 
     gameOver() {
         if (this.score <= 0 && this.enemieCollision()) {
-            clearInterval(this.setIntervalId)
-
+            clearInterval(this.setIntervalId);
+            this.buttonGO.style.display = 'block';
             this.ctx.font = "40px Comic Sans MS";
             this.ctx.textAlign = "center";
             this.ctx.fillText(
@@ -177,4 +168,21 @@ class Game {
             );
         }
     }
+
+/*     restartButton() {
+        let restartButton = document.querySelector(`.restart`);
+        restartButton.innerHTML = `<button id="restart-button"></button>`;
+        restartButton.addEventListener('click', function (event) {
+            event.preventDefault()
+            coronas = [];
+            allSanitizers = [];
+            allVaccins = [];
+            allBottles = [];
+            sanitizerCounter = 10;
+            myGameArea.clear();
+            player = new Player();
+            myGameArea.start();
+            restartButton.innerHTML = ``;
+        });
+    } */
 }

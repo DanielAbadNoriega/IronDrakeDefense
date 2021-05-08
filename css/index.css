@@ -9,6 +9,10 @@
 	justify-content: flex-start;
 } */
 
+#button-reload{
+	display: none;
+}
+
 canvas {
 	border: 1px dotted;
 	margin: 0 auto;

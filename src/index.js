@@ -1,6 +1,32 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+window.onload = () => {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-const game = new Game(ctx)
+    const game = new Game(ctx)
+    document.addEventListener("keydown", (event) => {
+        console.log(event)
+        if (!game.isStarted) {
+            console.log("entro")
+            /* intro.remove(); */
+            game.start();
+        }
+    })
+}
 
-game.start()
+/* 
+window.onload = () => {
+    const ctx = document.getElementById("canvas").getContext("2d");
+    const intro = document.getElementById("game-intro");
+    const buttonRemove = document.getElementById("button-game-over")
+    // aqui ocultaré el boton
+    const game = new Game(ctx);​
+    document.addEventListener("keyup", (event) => {
+        game.onKeyEvent(event);
+    });​
+    document.addEventListener("keypress", (event) => {
+        if (event.keyCode === UP && !game.isStarted) {
+            intro.remove();
+            game.start();
+        }
+    });
+}; */
