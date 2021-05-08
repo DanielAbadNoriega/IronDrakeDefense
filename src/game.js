@@ -6,6 +6,7 @@ class Game {
 
         this.bg = new Background(ctx);
         this.dragon = new Dragon(ctx);
+        this.bosses = [];
         this.enemies = [];
         this.coins = [];
         this.score = 0;
@@ -49,6 +50,7 @@ class Game {
         this.clearEnemie();
     }
 
+    // Coin Methods
     addCoin() {
         if (this.drawCount % Math.PI) {
             return
@@ -69,6 +71,7 @@ class Game {
         return isCatch;
     }
 
+    // Enemie Methods
     addEnemie() {
         if (this.drawCount % 100) {
             return
@@ -89,7 +92,6 @@ class Game {
         this.enemies = this.enemies.filter(enemie => !enemie.isCatched)
     }
 
-
     enemieFired() {
         const fireballs = this.dragon.weapon.fireballs
         const isFired = this.enemies.some(enemie => {
@@ -100,6 +102,43 @@ class Game {
 
         if (isFired) {
             this.score += 5;
+            console.log(this.score)
+        }
+        return isFired;
+    }
+
+    // Boss Methods
+
+    addBoss() {
+        if (this.drawCount % 100) {
+            return
+        }
+        this.bosses.push(new Boss(this.ctx));
+    }
+
+    bossCollision() {
+        const isCatch = this.bosses.some(boss => boss.isCatch(this.dragon));
+        if (isCatch) {
+            this.score = this.score - 100;
+            console.log(this.score)
+        }
+        return isCatch;
+    }
+
+    clearBoss() {
+        this.bosses = this.bosses.filter(boss => !boss.isCatched)
+    }
+
+    bossFired() {
+        const fireballs = this.dragon.weapon.fireballs
+        const isFired = this.bosses.some(boss => {
+            return fireballs.some(fireball => {
+                return boss.isCatch(fireball)
+            })
+        });
+
+        if (isFired) {
+            this.score += 100;
             console.log(this.score)
         }
         return isFired;
