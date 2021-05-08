@@ -1,6 +1,7 @@
 class Background {
-    constructor(ctx) {
+    constructor(ctx,s) {
         this.ctx = ctx;
+        this.s = s;
 
         this.x = 0;
         this.y = 0;

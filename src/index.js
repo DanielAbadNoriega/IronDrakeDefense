@@ -1,8 +1,9 @@
 window.onload = () => {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    const s = getComputedStyle(canvas)
 
-    const game = new Game(ctx)
+    const game = new Game(ctx,s)
     document.addEventListener("keydown", (event) => {
         if (!game.isStarted) {
             /* intro.remove(); */

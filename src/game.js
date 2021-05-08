@@ -1,10 +1,11 @@
 class Game {
-    constructor(ctx) {
+    constructor(ctx,s) {
         this.ctx = ctx;
+        this.s = s;
         this.setIntervalId = null;
         this.drawCount = 0;
 
-        this.bg = new Background(ctx);
+        this.bg = new Background(ctx,s);
         this.dragon = new Dragon(ctx);
         this.bosses = [];
         this.enemies = [];
