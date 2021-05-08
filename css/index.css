@@ -1,20 +1,37 @@
-/* body {
-	padding: 0;
-	text-align: center;
-	background-image: url('./../Images/arcademachine.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-repeat: no-repeat;
-	display: flex;
-	justify-content: flex-start;
-} */
-
-#button-reload{
-	display: none;
+body {
+  padding: 0;
+  text-align: center;
+  background-image: url("./../Images/backgroundHtml.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
 }
 
-canvas {
-	border: 1px dotted;
-	margin: 0 auto;
-	display: block;
+#button-reload {
+  display: none;
+}
+
+#container {
+  /* border: 1px solid white; */
+  width: 1650px;
+  height: 1250px;
+
+  margin: 0px auto;
+  /* margin-top: 200px; */
+  /* margin-right: 800px; */
+  text-align: center;
+  background-image: url("./../Images/arcadeMachine.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+}
+
+#canvas {
+  border: 1px solid black;
+  border-radius: 2.6em;
+  margin-top: 265px;
+  width: 918px;
+  height: 700px;
 }
