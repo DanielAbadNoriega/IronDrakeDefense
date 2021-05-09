@@ -19,7 +19,11 @@ body {
 }
 
 #canvas {
-  border: 1px solid black;
+  /* border: 1px solid white; */
+  background-image: url("./../Images/backgroundCanvas.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   border-radius: 2.6em;
   margin: 0px auto;
   margin-top: 235px;

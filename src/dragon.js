@@ -23,7 +23,7 @@ class Dragon {
         }
 
         this.img = new Image();
-        this.img.src = './Images/Drake&WolfM.png'
+        this.img.src = './Images/Drake&Wolf.png'
 
         this.img.frames = 4;
         this.img.frameIndex = 0;
