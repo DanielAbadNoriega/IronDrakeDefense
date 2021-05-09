@@ -157,9 +157,9 @@ class Game {
     }
 
     drawScore() {
-        this.ctx.font = '30px serif';
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText('Score: ' + this.score, 50, 50);
+        this.ctx.font = '70px serif';
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText('Score: ' + this.score, 100, 50);
     }
 
     gameOver() {
