@@ -4,8 +4,6 @@ class Dragon {
 
         this.x = 400;
         this.y = 550;
-/*         this.x = this.x;
-        this.y = this.y; */
 
         this.w = 200;
         this.h = 200;
@@ -152,7 +150,6 @@ class Dragon {
     isCollide(el) {
         const collideX = el.x + el.w > this.x && el.x < this.x + this.w;
         const collideY = el.y < this.y + this.h && el.y + el.h > this.y;
-        console.log("collideX",collideX, "collideY", collideY)
         return collideX && collideY;
     }
 }

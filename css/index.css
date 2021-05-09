@@ -12,21 +12,25 @@ body {
   display: none;
 }
 
-#container {
+/* #container {
+  border: 1px solid white;
   margin: 0 auto;
-  display: block;
+  display: flex;
   text-align: center;
-}
+  align-items: center;
+} */
 
 #canvas {
-  /* border: 1px solid white; */
+  border: 1px solid white;
   background-image: url("./../Images/backgroundCanvas.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-origin:border-box;
   border-radius: 2.6em;
-  margin: 0px auto;
-  margin-top: 235px;
-  display: block;
   width: 36%;
+  height: 600px;
+  display: block;
+  margin: 0px auto;
+  margin-top: 200px;
 }

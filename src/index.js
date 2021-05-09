@@ -1,31 +1,18 @@
 window.onload = () => {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const s = getComputedStyle(canvas)
+    const s = getComputedStyle(canvas);
+    const buttonRemove = document.getElementById("button-game-over");
 
-    const game = new Game(ctx,s)
-    document.addEventListener("keydown", (event) => {
-        if (!game.isStarted) {
-            /* intro.remove(); */
-            game.start();
-        }
-    })
-}
+    let game = new Game(ctx, s)
 
-/* 
-window.onload = () => {
-    const ctx = document.getElementById("canvas").getContext("2d");
-    const intro = document.getElementById("game-intro");
-    const buttonRemove = document.getElementById("button-game-over")
-    // aqui ocultaré el boton
-    const game = new Game(ctx);​
-    document.addEventListener("keyup", (event) => {
-        game.onKeyEvent(event);
-    });​
-    document.addEventListener("keypress", (event) => {
-        if (event.keyCode === UP && !game.isStarted) {
-            intro.remove();
+    document.addEventListener("keypress", () => {
+        if (!game.isStarted && !game.mustReload) {
+            console.log("entro")
             game.start();
+        } else if (game.mustReload) {
+            console.log("resteo!");
+            game.restart();
         }
     });
-}; */
+}
