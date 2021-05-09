@@ -139,11 +139,13 @@ class Dragon {
 
         if (this.x + this.w >= this.ctx.canvas.width) {
             this.x = (this.ctx.canvas.width - this.w)-2;
+            this.vx = 0;
         }
 
         if (this.x < 0) {
             /* this.x *= -1; */
             this.x = 2;
+            this.vx = 0;
         }
     }
 
