@@ -2,8 +2,8 @@ class Enemie {
     constructor(ctx) {
         this.ctx = ctx;
 
-        this.w = 50;
-        this.h = 50;
+        this.w = 100;
+        this.h = 100;
 
         this.x = Math.random() * (this.ctx.canvas.width - this.w) + 100;
         this.y = -this.h;

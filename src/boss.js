@@ -2,8 +2,8 @@ class Boss {
     constructor(ctx) {
         this.ctx = ctx;
 
-        this.w = 200;
-        this.h = 150;
+        this.w = 300;
+        this.h = 200;
 
         this.x = Math.random() * (this.ctx.canvas.width - this.w) + 100;
         this.y = -this.h;
@@ -21,7 +21,7 @@ class Boss {
         this.img.frameIndex = 0;
         this.tick = 0;
 
-        this.bossWeapon = new bossWeapon(this)
+        this.bossWeapon = new BossWeapon(this)
     }
 
     randomEnemie() {

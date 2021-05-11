@@ -5,8 +5,8 @@ class Dragon {
         this.x = 400;
         this.y = 550;
 
-        this.w = 200;
-        this.h = 200;
+        this.w = 250;
+        this.h = 250;
 
         this.vx = 0;
         this.vy = 0;

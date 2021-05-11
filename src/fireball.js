@@ -3,8 +3,8 @@ class Fireball {
         this.ctx = ctx
         this.x = x;
         this.y = y;
-        this.w = 100;
-        this.h = 200;
+        this.w = 200;
+        this.h = 250;
         this.vy = -10;
 
         this.img = new Image();
@@ -31,7 +31,6 @@ class Fireball {
     }
 
     move() {
-
         this.y += this.vy;
     }
 
@@ -43,7 +42,6 @@ class Fireball {
                 this.img.frameIndex = 0;
             }
         }
-
     }
 
     isVisible() {

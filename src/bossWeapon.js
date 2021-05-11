@@ -1,29 +1,34 @@
-class Weapon {
+class BossWeapon {
     constructor(shooter) {
         this.shooter = shooter;
-        this.fireballs = []
+        this.bossFireballs = [];
+        this.coldown = 0;
     }
 
     shoot() {
-        const fireball = new Fireball(
+        const bossFireball = new BossFireball(
             this.shooter.ctx,
-            this.shooter.x + this.shooter.w/4,
-            this.shooter.y - this.shooter.h/2,
+            this.shooter.x + this.shooter.w/3,
+            this.shooter.y + this.shooter.h/2,
         )
 
-        this.fireballs.push(fireball)
+        this.bossFireballs.push(bossFireball)
     }
     
     draw() {
         this.clearFireballs();
-        this.fireballs.forEach(fire => fire.draw())
+        this.bossFireballs.forEach(fire => fire.draw())
+        if(this.coldown++ >= 150){
+            this.shoot();
+            this.coldown = 0;
+        }
     }
     
     clearFireballs() {
-        this.fireballs = this.fireballs.filter(b => b.isVisible())
+        this.bossFireballs = this.bossFireballs.filter(b => b.isVisible())
     }
 
     move() {
-        this.fireballs.forEach(fire => fire.move())
+        this.bossFireballs.forEach(fire => fire.move())
     }
 }

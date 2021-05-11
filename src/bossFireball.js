@@ -1,14 +1,14 @@
-class Fireball {
+class BossFireball {
     constructor(ctx, x, y) {
         this.ctx = ctx
         this.x = x;
         this.y = y;
         this.w = 100;
-        this.h = 200;
-        this.vy = -10;
+        this.h = 100;
+        this.vy = 5;
 
         this.img = new Image();
-        this.img.src = "./Images/fireball_bg.png";
+        this.img.src = "./Images/bossFireball_bg.png";
         this.img.frames = 6;
         this.img.frameIndex = 0;
         this.ticks = 0;
@@ -31,7 +31,6 @@ class Fireball {
     }
 
     move() {
-
         this.y += this.vy;
     }
 
@@ -43,7 +42,6 @@ class Fireball {
                 this.img.frameIndex = 0;
             }
         }
-
     }
 
     isVisible() {
