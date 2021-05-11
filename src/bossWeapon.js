@@ -18,7 +18,7 @@ class BossWeapon {
     draw() {
         this.clearFireballs();
         this.bossFireballs.forEach(fire => fire.draw())
-        if(this.coldown++ >= 150){
+        if(this.coldown++ >= 200){
             this.shoot();
             this.coldown = 0;
         }

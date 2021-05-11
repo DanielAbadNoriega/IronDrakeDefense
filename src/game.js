@@ -113,6 +113,8 @@ class Game {
     checkCollisions() {
         let fireballs = this.dragon.weapon.fireballs;
 
+        let bossFireballs = this.bosses.map(boss => boss.bossWeapon.bossFireballs);
+
         let ballBoss = this.bosses.some(boss => {
             return fireballs.some(fireball => {
                 if (fireball.isCollide(boss)) {
@@ -141,6 +143,16 @@ class Game {
             })
         })
 
+        const crashTest = this.bosses.some(boss => {
+            return boss.bossWeapon.bossFireballs.some(fireBall => {
+                return fireBall.isCollide(this.dragon)
+            })
+        })
+
+        if (crashTest) {
+            this.gameOver();
+        }
+
         let allEnemies = [...this.enemies, ...this.bosses];
 
         let dragonCollide = allEnemies.some(enemy => {
@@ -153,22 +165,22 @@ class Game {
     drawScore() {
         this.ctx.font = '70px serif';
         this.ctx.fillStyle = 'white';
-        this.ctx.fillText('Score: ' + this.score, this.ctx.canvas.width-400, this.ctx.canvas.height-100);
+        this.ctx.fillText('Score: ' + this.score, this.ctx.canvas.width - 400, this.ctx.canvas.height - 100);
     }
 
     restart() {
-            this.setIntervalId = null;
-            this.drawCount = 0;
-            this.bosses = [];
-            this.enemies = [];
-            this.coins = [];
-            this.fireballs = [];
-            this.score = 0;
-            this.isStarted = false;
-            this.mustReload = false;
-            this.dragon = new Dragon(ctx);
-            this.clear();
-            this.start();
+        this.setIntervalId = null;
+        this.drawCount = 0;
+        this.bosses = [];
+        this.enemies = [];
+        this.coins = [];
+        this.fireballs = [];
+        this.score = 0;
+        this.isStarted = false;
+        this.mustReload = false;
+        this.dragon = new Dragon(ctx);
+        this.clear();
+        this.start();
     }
 
     gameOver() {
@@ -179,9 +191,9 @@ class Game {
         this.ctx.textAlign = "center";
         this.ctx.fillStyle = 'red'
         this.ctx.fillText(
-            "GAME OVER!" ,
+            "GAME OVER!",
             this.ctx.canvas.width / 2,
-            this.ctx.canvas.height /2
+            this.ctx.canvas.height / 2
         );
     }
 }

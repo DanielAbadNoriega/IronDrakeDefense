@@ -13,8 +13,7 @@ body {
 }
 
 #canvas {
-  /* border: 1px solid white; */
-  padding: -100px;
+  border: 5px solid rgb(34, 32, 32);
   background-image: url("./../Images/backgroundCanvas.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -22,8 +21,24 @@ body {
   background-origin:border-box;
   border-radius: 2.6em;
   width: 36%;
-  height: 600px;
+  height: 590px;
   display: block;
   margin: 0px auto;
-  margin-top: 180px;
+  margin-top: 170px;
 }
+
+/* .life-container {
+  height: 80px;
+  width: 300px;
+  background-color: gray;
+  position: relative;
+}
+
+.life-bar {
+  height: 40px;
+  width: 100%;
+  background-color: green;
+  position: absolute;
+  left: 0;
+  top:20px;
+} */
