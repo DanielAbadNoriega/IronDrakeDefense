@@ -12,16 +12,9 @@ body {
   display: none;
 }
 
-/* #container {
-  border: 1px solid white;
-  margin: 0 auto;
-  display: flex;
-  text-align: center;
-  align-items: center;
-} */
-
 #canvas {
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  padding: -100px;
   background-image: url("./../Images/backgroundCanvas.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -32,5 +25,5 @@ body {
   height: 600px;
   display: block;
   margin: 0px auto;
-  margin-top: 200px;
+  margin-top: 180px;
 }

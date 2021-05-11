@@ -94,7 +94,7 @@ class Game {
     // Boss Methods
 
     addBoss() {
-        if (this.drawCount % 100) {
+        if (this.drawCount % 1000) {
             return
         }
         this.bosses.push(new Boss(this.ctx));
@@ -166,6 +166,7 @@ class Game {
             this.score = 0;
             this.isStarted = false;
             this.mustReload = false;
+            this.dragon = new Dragon(ctx);
             this.clear();
             this.start();
     }
@@ -174,13 +175,13 @@ class Game {
         clearInterval(this.setIntervalId);
         this.mustReload = true;
         this.buttonGO.style.display = 'block';
-        this.ctx.font = "40px Comic Sans MS";
+        this.ctx.font = "100px Comic Sans MS";
         this.ctx.textAlign = "center";
+        this.ctx.fillStyle = 'red'
         this.ctx.fillText(
-            this.ctx.fillStyle = 'red',
-            "GAME OVER",
-            this.ctx.canvas.width -400,
-            this.ctx.canvas.height -100
+            "GAME OVER!" ,
+            this.ctx.canvas.width / 2,
+            this.ctx.canvas.height /2
         );
     }
 }

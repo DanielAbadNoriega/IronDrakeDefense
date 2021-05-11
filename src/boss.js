@@ -13,13 +13,15 @@ class Boss {
         this.xRandom = Math.sign(Math.random() - 0.5);
         this.hits = 0;
 
-        this.bosses = ['./Images/bossOneM.png']
+        this.bosses = ['./Images/bossOneM.png', './Images/bossTwoM.png']
         this.img = new Image();
         this.img.src = this.randomEnemie();
 
         this.img.frames = 3;
         this.img.frameIndex = 0;
         this.tick = 0;
+
+        this.bossWeapon = new bossWeapon(this)
     }
 
     randomEnemie() {
@@ -41,11 +43,14 @@ class Boss {
             this.w,
             this.h,
         )
+
+        this.bossWeapon.draw();
     }
 
     move() {
         this.animate();
         this.mapLimits();
+        this.bossWeapon.move();
         this.y += this.vy;
         this.x += this.vx * this.xRandom;
     }

@@ -13,9 +13,10 @@ class Enemie {
         this.xRandom = Math.sign(Math.random() - 0.5);
         this.isCatched = false;
 
-        this.enemies = ['./Images/enemigos_black.png', './Images/enemigos_green1.png', './Images/enemigos_green2.png', './Images/enemigos_grey.png', './Images/enemigos_orange.png', './Images/enemigos_purple.png', './Images/enemigos_red.png']
+        this.enemies = ['./Images/enemigos_black.png', './Images/enemigos_green1.png', './Images/enemigos_green2.png',
+        './Images/enemigos_grey.png', './Images/enemigos_orange.png', './Images/enemigos_purple.png', './Images/enemigos_red.png']
         this.img = new Image();
-        this.img.src = this.randomEnemie();
+        this.img.src = this.randomEnemie(); 
 
         this.img.frames = 3;
         this.img.frameIndex = 0;
